@@ -1,48 +1,45 @@
-package com.example.bankapp
+package com.example.bankapp.transfers
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.bankapp.databinding.ActivityMainBinding
-import com.example.bankapp.databinding.FragmentCustomersBinding
+import com.example.bankapp.R
+import com.example.bankapp.databinding.FragmentTransfersBinding
+import com.example.bankapp.db.BankDB
 
 
-class CustomersFragment : Fragment() {
-    private lateinit var binding: FragmentCustomersBinding
+class TransfersFragment : Fragment() {
+    private lateinit var binding: FragmentTransfersBinding
     private lateinit var db: BankDB
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_customers,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_transfers,container,false)
         return binding.root
     }
 
-    @SuppressLint("Range")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         db = BankDB(requireContext(),null)
-        val cursor = db.getAllCustomers()
-        val adapterList = mutableListOf<Customer>()
+        val cursor = db.getAllTransfers()
+        val adapterList = mutableListOf<Transfer>()
         if(cursor != null) {
             while (cursor.moveToNext()) {
                 adapterList.add(
-                    Customer(
-                        cursor.getString(0),
+                    Transfer(
                         cursor.getString(1),
-                        cursor.getString(2).toDouble()
+                        cursor.getString(2),
+                        cursor.getString(3).toDouble()
                     )
                 )
             }
             cursor.close()
         }
-        binding.customersRv.adapter = CustomersAdapter(adapterList.reversed())
+        binding.transfersRv.adapter = TransfersAdapter(adapterList.reversed())
     }
 }

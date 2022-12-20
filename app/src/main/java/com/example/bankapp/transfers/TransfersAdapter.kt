@@ -1,4 +1,4 @@
-package com.example.bankapp
+package com.example.bankapp.transfers
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bankapp.R
 
 class TransfersAdapter(private val dataset: List<Transfer>): RecyclerView.Adapter<TransfersAdapter.TransferViewHolder>(){
 

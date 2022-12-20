@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MakeTransferActivity">
+        tools:context=".transfers.MakeTransferActivity">
 
         <EditText
             android:id="@+id/senderEt"

@@ -1,4 +1,4 @@
-package com.example.bankapp
+package com.example.bankapp.transfers
 
 data class Transfer (
     val sender: String,

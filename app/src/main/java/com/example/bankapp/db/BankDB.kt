@@ -1,4 +1,4 @@
-package com.example.bankapp
+package com.example.bankapp.db
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,7 +6,8 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.*
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
+import com.example.bankapp.customer.Customer
+import com.example.bankapp.transfers.Transfer
 
 
 class BankDB(context: Context, factory: CursorFactory?) : SQLiteOpenHelper(context,

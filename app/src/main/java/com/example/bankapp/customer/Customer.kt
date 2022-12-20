@@ -1,4 +1,4 @@
-package com.example.bankapp
+package com.example.bankapp.customer
 
 data class Customer (
     val name:String,

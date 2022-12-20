@@ -15,14 +15,14 @@
         android:theme="@style/Theme.BankApp"
         tools:targetApi="31">
         <activity
-            android:name=".MakeTransferActivity"
+            android:name=".transfers.MakeTransferActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddCustomerActivity"
+            android:name=".customer.AddCustomerActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

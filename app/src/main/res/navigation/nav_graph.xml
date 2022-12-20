@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/customersFragment"
-        android:name="com.example.bankapp.CustomersFragment"
+        android:name="com.example.bankapp.customer.CustomersFragment"
         android:label="fragment_customers"
         tools:layout="@layout/fragment_customers" />
     <fragment
         android:id="@+id/transfersFragment"
-        android:name="com.example.bankapp.TransfersFragment"
+        android:name="com.example.bankapp.transfers.TransfersFragment"
         android:label="fragment_transfers"
         tools:layout="@layout/fragment_transfers" />
 </navigation>

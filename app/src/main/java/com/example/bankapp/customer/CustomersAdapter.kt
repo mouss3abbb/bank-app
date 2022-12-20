@@ -1,10 +1,11 @@
-package com.example.bankapp
+package com.example.bankapp.customer
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bankapp.R
 
 class CustomersAdapter(private val dataset: List<Customer>) : RecyclerView.Adapter<CustomersAdapter.CustomersViewHolder>(){
 
@@ -12,12 +13,10 @@ class CustomersAdapter(private val dataset: List<Customer>) : RecyclerView.Adapt
         val nameTv: TextView
         val emailTv: TextView
         val balanceTv: TextView
-        val id: TextView
         init {
             nameTv = itemView.findViewById(R.id.name)
             emailTv = itemView.findViewById(R.id.email)
             balanceTv = itemView.findViewById(R.id.balance)
-            id = itemView.findViewById(R.id.id)
         }
     }
 
