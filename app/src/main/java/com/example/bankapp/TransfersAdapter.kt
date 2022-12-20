@@ -1,5 +1,6 @@
 package com.example.bankapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,9 +20,10 @@ class TransfersAdapter(private val dataset: List<Transfer>): RecyclerView.Adapte
         return TransferViewHolder(itemView)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TransferViewHolder, position: Int) {
-        holder.from.text = dataset[position].from
-        holder.to.text = dataset[position].to
+        holder.from.text = dataset[position].sender
+        holder.to.text = dataset[position].receiver
         holder.amount.text = holder.amount.text.toString() +  dataset[position].amount.toString()
     }
 

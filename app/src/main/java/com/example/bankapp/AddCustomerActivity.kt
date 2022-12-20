@@ -15,7 +15,7 @@ class AddCustomerActivity : AppCompatActivity() {
         setContentView(binding.root)
         val db = BankDB(this,null)
         binding.addCustomer.setOnClickListener {
-            db.insertCustomer(Customer(binding.nameEt.text.toString(),binding.emailEt.text.toString(),binding.balanceEt.text.toString().toDouble()))
+            db.insertCustomer(Customer(binding.nameEt.text.toString().trim(),binding.emailEt.text.toString().trim(),binding.balanceEt.text.toString().trim().toDouble()))
             startActivity(
                 Intent(this,MainActivity::class.java)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

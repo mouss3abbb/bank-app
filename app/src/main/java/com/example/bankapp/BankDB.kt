@@ -20,10 +20,8 @@ class BankDB(context: Context, factory: CursorFactory?) : SQLiteOpenHelper(conte
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val make_customers_table = "create table "+ CUSTOMERS_TABLE+"(name text, email text primary key, current_balance decimal)"
-        val make_transfers_table = "create table "+ TRANSFERS_TABLE+"(id integer primary key autoincrement not null, sender text, receiver text, amount decimal)"
-        db?.execSQL(make_customers_table)
-        db?.execSQL(make_transfers_table)
+        db?.execSQL("create table $CUSTOMERS_TABLE(name text, email text primary key, current_balance decimal)")
+        db?.execSQL("create table $TRANSFERS_TABLE(id integer primary key autoincrement not null, sender text, receiver text, amount decimal)")
 
     }
 
@@ -46,10 +44,13 @@ class BankDB(context: Context, factory: CursorFactory?) : SQLiteOpenHelper(conte
     fun makeTransfer(transfer: Transfer){
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put("sender",transfer.from)
-        cv.put("receiver",transfer.to)
+        cv.put("sender",transfer.sender)
+        cv.put("receiver",transfer.receiver)
         cv.put("amount",transfer.amount)
         db.insert(TRANSFERS_TABLE,null,cv)
+        db.execSQL("update $CUSTOMERS_TABLE set current_balance = current_balance + ${transfer.amount} where email = \"${transfer.receiver}\"")
+        db.execSQL("update $CUSTOMERS_TABLE set current_balance = current_balance - ${transfer.amount} where email = \"${transfer.sender}\"")
+        db.execSQL("delete from $CUSTOMERS_TABLE where current_balance < 0")
         db.close()
     }
 

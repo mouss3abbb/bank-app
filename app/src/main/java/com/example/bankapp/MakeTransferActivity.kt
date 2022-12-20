@@ -12,12 +12,13 @@ class MakeTransferActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMakeTransferBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        db = BankDB(this,null)
         binding.addTransfer.setOnClickListener {
             db.makeTransfer(
                 Transfer(
-                    binding.senderEt.text.toString(),
-                    binding.receiverEt.text.toString(),
-                    binding.amountEt.text.toString().toDouble()
+                    binding.senderEt.text.toString().trim(),
+                    binding.receiverEt.text.toString().trim(),
+                    binding.amountEt.text.toString().trim().toDouble()
                 )
             )
             startActivity(
